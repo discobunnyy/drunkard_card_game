@@ -35,21 +35,6 @@ def findID(img, desList):
         matchList.append(len(good))
     print(matchList)
 
-    '''try:
-        for des in desList:
-            matches = bf.knnMatch(des, des2, k=2)
-            good = []
-            for m, n in matches:
-                if m.distance < 0.75 * n.distance:
-                    good. append([m])
-                matchList.append(len(good))
-    except:
-        pass
-
-    if len(matchList) != 0:
-        if max(matchList) > 15:
-            finalVal = matchList.index(max(matchList))
-    return finalVal'''
 
 desList = findDes(images)
 print(len(desList))
