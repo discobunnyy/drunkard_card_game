@@ -2,7 +2,7 @@ import cv2
 
 sim = []
 
-img_1 = cv2.imread('cards/example.png', 0)
+img_1 = cv2.imread('cards/input.png', 0)
 img_2 = cv2.imread('cards/king_heart.png', 0)
 
 img_ace_heart = cv2.imread('cards/ace_heart.png', 0)
@@ -61,13 +61,36 @@ kp_7_heart, des_7_heart = orb.detectAndCompute(img_7_heart, None)
 kp_6_heart, des_6_heart = orb.detectAndCompute(img_6_heart, None)
 
 kp_ace_spade, des_ace_spade = orb.detectAndCompute(img_ace_spade, None)
+kp_king_spade, des_king_spade = orb.detectAndCompute(img_king_spade, None)
+kp_queen_spade, des_queen_spade = orb.detectAndCompute(img_queen_spade, None)
+kp_jack_spade, des_jack_spade = orb.detectAndCompute(img_jack_spade, None)
+kp_10_spade, des_10_spade = orb.detectAndCompute(img_10_spade, None)
+kp_9_spade, des_9_spade = orb.detectAndCompute(img_9_spade, None)
+kp_8_spade, des_8_spade = orb.detectAndCompute(img_8_spade, None)
+kp_7_spade, des_7_spade = orb.detectAndCompute(img_7_spade, None)
+kp_6_spade, des_6_spade = orb.detectAndCompute(img_6_spade, None)
 
 
 kp_ace_diamond, des_ace_diamond = orb.detectAndCompute(img_ace_diamond, None)
+kp_king_diamond, des_king_diamond = orb.detectAndCompute(img_king_diamond, None)
+kp_queen_diamond, des_queen_diamond = orb.detectAndCompute(img_queen_diamond, None)
+kp_jack_diamond, des_jack_diamond = orb.detectAndCompute(img_jack_diamond, None)
+kp_10_diamond, des_10_diamond = orb.detectAndCompute(img_10_diamond, None)
+kp_9_diamond, des_9_diamond = orb.detectAndCompute(img_9_diamond, None)
+kp_8_diamond, des_8_diamond = orb.detectAndCompute(img_8_diamond, None)
+kp_7_diamond, des_7_diamond = orb.detectAndCompute(img_7_diamond, None)
+kp_6_diamond, des_6_diamond = orb.detectAndCompute(img_6_diamond, None)
 
 
 kp_ace_club, des_ace_club = orb.detectAndCompute(img_ace_club, None)
-
+kp_king_club, des_king_club = orb.detectAndCompute(img_king_club, None)
+kp_queen_club, des_queen_club = orb.detectAndCompute(img_queen_club, None)
+kp_jack_club, des_jack_club = orb.detectAndCompute(img_jack_club, None)
+kp_10_club, des_10_club = orb.detectAndCompute(img_10_club, None)
+kp_9_club, des_9_club = orb.detectAndCompute(img_9_club, None)
+kp_8_club, des_8_club = orb.detectAndCompute(img_8_club, None)
+kp_7_club, des_8_club = orb.detectAndCompute(img_7_club, None)
+kp_6_club, des_7_club = orb.detectAndCompute(img_6_club, None)
 
 
 #------------------------------------------------
@@ -84,11 +107,27 @@ matches_6_heart = bf.knnMatch(des_1, des_6_heart, k=2)
 
 
 matches_ace_spade = bf.knnMatch(des_1, des_ace_spade, k=2)
+matches_king_spade = bf.knnMatch(des_1, des_king_spade, k=2)
+matches_queen_spade = bf.knnMatch(des_1, des_queen_spade, k=2)
+matches_jack_spade = bf.knnMatch(des_1, des_jack_spade, k=2)
+matches_10_spade = bf.knnMatch(des_1, des_10_spade, k=2)
+matches_9_spade = bf.knnMatch(des_1, des_9_spade, k=2)
+matches_8_spade = bf.knnMatch(des_1, des_8_spade, k=2)
+matches_7_spade = bf.knnMatch(des_1, des_7_spade, k=2)
+matches_6_spade = bf.knnMatch(des_1, des_6_spade, k=2)
 
 
 matches_ace_diamond = bf.knnMatch(des_1, des_ace_diamond, k=2)
+matches_ace_diamond = bf.knnMatch(des_1, des_ace_diamond, k=2)
+matches_ace_diamond = bf.knnMatch(des_1, des_ace_diamond, k=2)
+matches_ace_diamond = bf.knnMatch(des_1, des_ace_diamond, k=2)
+matches_ace_diamond = bf.knnMatch(des_1, des_ace_diamond, k=2)
 
 
+matches_ace_club = bf.knnMatch(des_1, des_ace_club, k=2)
+matches_ace_club = bf.knnMatch(des_1, des_ace_club, k=2)
+matches_ace_club = bf.knnMatch(des_1, des_ace_club, k=2)
+matches_ace_club = bf.knnMatch(des_1, des_ace_club, k=2)
 matches_ace_club = bf.knnMatch(des_1, des_ace_club, k=2)
 
 
