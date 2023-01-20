@@ -1,6 +1,7 @@
 import cv2
 
 similar = []
+similar2 = []
 
 img_1 = cv2.imread('cards/8_spade.png', 0)
 img_2 = cv2.imread('cards/king_heart.png', 0)
@@ -512,4 +513,425 @@ elif maximum == similar[36]:
     suit = 'club'
     print('6_club')
 
+print(num, suit)
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+kp_2, des_2 = orb.detectAndCompute(img_2, None)
+
+bf = cv2.BFMatcher()
+matches_ace_heart2 = bf.knnMatch(des_2, des_ace_heart, k=2)
+matches_king_heart2 = bf.knnMatch(des_2, des_king_heart, k=2)
+matches_queen_heart2 = bf.knnMatch(des_2, des_queen_heart, k=2)
+matches_jack_heart2 = bf.knnMatch(des_2, des_jack_heart, k=2)
+matches_10_heart2 = bf.knnMatch(des_2, des_10_heart, k=2)
+matches_9_heart2 = bf.knnMatch(des_2, des_9_heart, k=2)
+matches_8_heart2 = bf.knnMatch(des_2, des_8_heart, k=2)
+matches_7_heart2 = bf.knnMatch(des_2, des_7_heart, k=2)
+matches_6_heart2 = bf.knnMatch(des_2, des_6_heart, k=2)
+
+
+matches_ace_spade2 = bf.knnMatch(des_2, des_ace_spade, k=2)
+matches_king_spade2 = bf.knnMatch(des_2, des_king_spade, k=2)
+matches_queen_spade2 = bf.knnMatch(des_2, des_queen_spade, k=2)
+matches_jack_spade2 = bf.knnMatch(des_2, des_jack_spade, k=2)
+matches_10_spade2 = bf.knnMatch(des_2, des_10_spade, k=2)
+matches_9_spade2 = bf.knnMatch(des_2, des_9_spade, k=2)
+matches_8_spade2 = bf.knnMatch(des_2, des_8_spade, k=2)
+matches_7_spade2 = bf.knnMatch(des_2, des_7_spade, k=2)
+matches_6_spade2 = bf.knnMatch(des_2, des_6_spade, k=2)
+
+
+matches_ace_diamond2 = bf.knnMatch(des_2, des_ace_diamond, k=2)
+matches_king_diamond2 = bf.knnMatch(des_2, des_king_diamond, k=2)
+matches_queen_diamond2 = bf.knnMatch(des_2, des_queen_diamond, k=2)
+matches_jack_diamond2 = bf.knnMatch(des_2, des_jack_diamond, k=2)
+matches_10_diamond2 = bf.knnMatch(des_2, des_10_diamond, k=2)
+matches_9_diamond2 = bf.knnMatch(des_2, des_9_diamond, k=2)
+matches_8_diamond2 = bf.knnMatch(des_2, des_8_diamond, k=2)
+matches_7_diamond2 = bf.knnMatch(des_2, des_7_diamond, k=2)
+matches_6_diamond2 = bf.knnMatch(des_2, des_6_diamond, k=2)
+
+
+matches_ace_club2 = bf.knnMatch(des_2, des_ace_club, k=2)
+matches_king_club2 = bf.knnMatch(des_2, des_king_club, k=2)
+matches_queen_club2 = bf.knnMatch(des_2, des_queen_club, k=2)
+matches_jack_club2 = bf.knnMatch(des_2, des_jack_club, k=2)
+matches_10_club2 = bf.knnMatch(des_2, des_10_club, k=2)
+matches_9_club2 = bf.knnMatch(des_2, des_9_club, k=2)
+matches_8_club2 = bf.knnMatch(des_2, des_8_club, k=2)
+matches_7_club2 = bf.knnMatch(des_2, des_7_club, k=2)
+matches_6_club2 = bf.knnMatch(des_2, des_6_club, k=2)
+
+#------------------------------------------------------------
+
+good_ace_heart2 = []
+for m, n in matches_ace_heart2:
+    if m.distance < 0.8*n.distance:
+        good_ace_heart2.append([m])
+similar2.append((len(good_ace_heart2)))
+
+good_king_heart2 = []
+for m, n in matches_king_heart2:
+    if m.distance < 0.8*n.distance:
+        good_king_heart2.append([m])
+similar2.append((len(good_king_heart2)))
+
+good_queen_heart2 = []
+for m, n in matches_queen_heart2:
+    if m.distance < 0.8*n.distance:
+        good_queen_heart2.append([m])
+similar2.append((len(good_queen_heart2)))
+
+good_jack_heart2 = []
+for m, n in matches_jack_heart2:
+    if m.distance < 0.8*n.distance:
+        good_jack_heart2.append([m])
+similar2.append((len(good_jack_heart2)))
+
+good_10_heart2 = []
+for m, n in matches_10_heart2:
+    if m.distance < 0.8*n.distance:
+        good_10_heart2.append([m])
+similar2.append((len(good_10_heart2)))
+
+good_9_heart2 = []
+for m, n in matches_9_heart2:
+    if m.distance < 0.8*n.distance:
+        good_9_heart2.append([m])
+similar2.append((len(good_9_heart2)))
+
+good_8_heart2 = []
+for m, n in matches_8_heart2:
+    if m.distance < 0.8*n.distance:
+        good_8_heart2.append([m])
+similar2.append((len(good_8_heart2)))
+
+good_7_heart2 = []
+for m, n in matches_7_heart2:
+    if m.distance < 0.8*n.distance:
+        good_7_heart2.append([m])
+similar2.append((len(good_7_heart2)))
+
+good_6_heart2 = []
+for m, n in matches_6_heart2:
+    if m.distance < 0.8*n.distance:
+        good_6_heart2.append([m])
+similar2.append((len(good_6_heart2)))
+#=====================================
+
+good_ace_spade2 = []
+for m, n in matches_ace_spade2:
+    if m.distance < 0.8*n.distance:
+        good_ace_spade2.append([m])
+similar2.append((len(good_ace_spade2)))
+
+good_king_spade2 = []
+for m, n in matches_king_spade2:
+    if m.distance < 0.8*n.distance:
+        good_king_spade2.append([m])
+similar2.append((len(good_king_spade2)))
+
+good_queen_spade2 = []
+for m, n in matches_queen_spade2:
+    if m.distance < 0.8*n.distance:
+        good_queen_spade2.append([m])
+similar2.append((len(good_queen_spade2)))
+
+good_jack_spade2 = []
+for m, n in matches_jack_spade2:
+    if m.distance < 0.8*n.distance:
+        good_jack_spade2.append([m])
+similar2.append((len(good_jack_spade2)))
+
+good_10_spade2 = []
+for m, n in matches_10_spade2:
+    if m.distance < 0.8*n.distance:
+        good_10_spade2.append([m])
+similar2.append((len(good_10_spade2)))
+
+good_9_spade2 = []
+for m, n in matches_9_spade2:
+    if m.distance < 0.8*n.distance:
+        good_9_spade2.append([m])
+similar2.append((len(good_9_spade2)))
+
+good_8_spade2 = []
+for m, n in matches_8_spade2:
+    if m.distance < 0.8*n.distance:
+        good_8_spade2.append([m])
+similar2.append((len(good_8_spade2)))
+
+good_7_spade2 = []
+for m, n in matches_7_spade2:
+    if m.distance < 0.8*n.distance:
+        good_7_spade2.append([m])
+similar2.append((len(good_7_spade2)))
+
+good_6_spade2 = []
+for m, n in matches_6_spade2:
+    if m.distance < 0.8*n.distance:
+        good_6_spade2.append([m])
+similar2.append((len(good_6_spade2)))
+#==================================
+
+good_ace_diamond2 = []
+for m, n in matches_ace_diamond2:
+    if m.distance < 0.8*n.distance:
+        good_ace_diamond2.append([m])
+similar2.append((len(good_ace_diamond2)))
+
+good_king_diamond2 = []
+for m, n in matches_king_diamond2:
+    if m.distance < 0.8*n.distance:
+        good_king_diamond2.append([m])
+similar2.append((len(good_king_diamond2)))
+
+good_queen_diamond2 = []
+for m, n in matches_queen_diamond2:
+    if m.distance < 0.8*n.distance:
+        good_queen_diamond2.append([m])
+similar2.append((len(good_queen_diamond2)))
+
+good_jack_diamond2 = []
+for m, n in matches_jack_diamond2:
+    if m.distance < 0.8*n.distance:
+        good_jack_diamond2.append([m])
+similar2.append((len(good_jack_diamond2)))
+
+good_10_diamond2 = []
+for m, n in matches_10_diamond2:
+    if m.distance < 0.8*n.distance:
+        good_10_diamond2.append([m])
+similar2.append((len(good_10_diamond2)))
+
+good_9_diamond2 = []
+for m, n in matches_9_diamond2:
+    if m.distance < 0.8*n.distance:
+        good_9_diamond2.append([m])
+similar2.append((len(good_9_diamond2)))
+
+good_8_diamond2 = []
+for m, n in matches_8_diamond2:
+    if m.distance < 0.8*n.distance:
+        good_8_diamond2.append([m])
+similar2.append((len(good_8_diamond2)))
+
+good_7_diamond2 = []
+for m, n in matches_7_diamond2:
+    if m.distance < 0.8*n.distance:
+        good_7_diamond2.append([m])
+similar2.append((len(good_7_diamond2)))
+
+good_6_diamond2 = []
+for m, n in matches_6_diamond2:
+    if m.distance < 0.8*n.distance:
+        good_6_diamond2.append([m])
+similar2.append((len(good_6_diamond2)))
+#===================================
+
+good_ace_club2 = []
+for m, n in matches_ace_club2:
+    if m.distance < 0.8*n.distance:
+        good_ace_club2.append([m])
+similar2.append((len(good_ace_club2)))
+
+good_king_club2 = []
+for m, n in matches_king_club2:
+    if m.distance < 0.8*n.distance:
+        good_king_club2.append([m])
+similar2.append((len(good_king_club2)))
+
+good_queen_club2 = []
+for m, n in matches_queen_club2:
+    if m.distance < 0.8*n.distance:
+        good_queen_club2.append([m])
+similar2.append((len(good_queen_club2)))
+
+good_jack_club2 = []
+for m, n in matches_jack_club2:
+    if m.distance < 0.8*n.distance:
+        good_jack_club2.append([m])
+similar2.append((len(good_jack_club2)))
+
+good_10_club2 = []
+for m, n in matches_10_club2:
+    if m.distance < 0.8*n.distance:
+        good_10_club2.append([m])
+similar2.append((len(good_10_club2)))
+
+good_9_club2 = []
+for m, n in matches_9_club2:
+    if m.distance < 0.8*n.distance:
+        good_9_club2.append([m])
+similar2.append((len(good_9_club2)))
+
+good_8_club2 = []
+for m, n in matches_8_club2:
+    if m.distance < 0.8*n.distance:
+        good_8_club2.append([m])
+similar2.append((len(good_8_club2)))
+
+good_7_club2 = []
+for m, n in matches_7_club2:
+    if m.distance < 0.8*n.distance:
+        good_7_club2.append([m])
+similar2.append((len(good_7_club2)))
+
+good_6_club2 = []
+for m, n in matches_6_club2:
+    if m.distance < 0.8*n.distance:
+        good_6_club2.append([m])
+similar2.append((len(good_6_club2)))
+
+print(*similar2)
+maximum2 = max(similar2)
+
+if maximum2 == similar2[0]:
+    num2 = 9
+    suit2 = 'heart'
+    print('ace_heart')
+elif maximum2 == similar2[1]:
+    num2 = 8
+    suit2 = 'heart'
+    print('king_heart')
+elif maximum2 == similar2[2]:
+    num2 = 7
+    suit2 = 'heart'
+    print('queen_heart')
+elif maximum2 == similar2[3]:
+    num2 = 6
+    suit2 = 'heart'
+    print('jack_heart')
+elif maximum2 == similar2[4]:
+    num2 = 5
+    suit2 = 'heart'
+    print('10_heart')
+elif maximum2 == similar2[5]:
+    num2 = 4
+    suit2 = 'heart'
+    print('9_heart')
+elif maximum2 == similar2[6]:
+    num2 = 3
+    suit2 = 'heart'
+    print('8_heart')
+elif maximum2 == similar2[7]:
+    num2 = 2
+    suit2 = 'heart'
+    print('7_heart')
+elif maximum2 == similar2[8]:
+    num2 = 1
+    suit2 = 'heart'
+    print('6_heart')
+elif maximum2 == similar2[9]:
+    num2 = 9
+    suit2 = 'spade'
+    print('ace_spade')
+elif maximum2 == similar2[10]:
+    num2 = 8
+    suit2 = 'spade'
+    print('king_spade')
+elif maximum2 == similar2[11]:
+    num2 = 7
+    suit2 = 'spade'
+    print('queen_spade')
+elif maximum2 == similar2[12]:
+    num2 = 6
+    suit2 = 'spade'
+    print('jack_spade')
+elif maximum2 == similar2[13]:
+    num2 = 5
+    suit2 = 'spade'
+    print('10_spade')
+elif maximum2 == similar2[14]:
+    num2 = 4
+    suit2 = 'spade'
+    print('9_spade')
+elif maximum2 == similar2[15]:
+    num2 = 3
+    suit2 = 'spade'
+    print('8_spade')
+elif maximum2 == similar2[16]:
+    num2 = 2
+    suit2 = 'spade'
+    print('7_spade')
+elif maximum2 == similar2[17]:
+    num2 = 1
+    suit2 = 'spade'
+    print('6_spade')
+elif maximum2 == similar2[18]:
+    num2 = 9
+    suit2 = 'diamond'
+    print('ace_diamond')
+elif maximum2 == similar2[19]:
+    num2 = 8
+    suit2 = 'diamond'
+    print('king_diamond')
+elif maximum2 == similar2[20]:
+    num2 = 7
+    suit2 = 'diamond'
+    print('queen_diamond')
+elif maximum2 == similar2[21]:
+    num2 = 6
+    suit2 = 'diamond'
+    print('jack_diamond')
+elif maximum2 == similar2[22]:
+    num2 = 5
+    suit2 = 'diamond'
+    print('10_diamond')
+elif maximum2 == similar2[23]:
+    num2 = 4
+    suit2 = 'diamond'
+    print('9_diamond')
+elif maximum2 == similar2[24]:
+    num2 = 3
+    suit2 = 'diamond'
+    print('8_diamond')
+elif maximum2 == similar2[25]:
+    num2 = 2
+    suit2 = 'diamond'
+    print('7_diamond')
+elif maximum2 == similar2[26]:
+    num2 = 1
+    suit2 = 'diamond'
+    print('6_diamond')
+elif maximum2 == similar2[28]:
+    num2 = 9
+    suit2 = 'club'
+    print('ace_club')
+elif maximum2 == similar2[29]:
+    num2 = 8
+    suit2 = 'club'
+    print('king_club')
+elif maximum2 == similar2[30]:
+    num2 = 7
+    suit2 = 'club'
+    print('queen_club')
+elif maximum2 == similar2[31]:
+    num2 = 6
+    suit2 = 'club'
+    print('jack_club')
+elif maximum2 == similar2[32]:
+    num2 = 5
+    suit2 = 'club'
+    print('10_club')
+elif maximum2 == similar2[33]:
+    num2 = 4
+    suit2 = 'club'
+    print('9_club')
+elif maximum2 == similar2[34]:
+    num2 = 3
+    suit2 = 'club'
+    print('8_club')
+elif maximum2 == similar2[35]:
+    num2 = 2
+    suit2 = 'club'
+    print('7_club')
+elif maximum2 == similar2[36]:
+    num2 = 1
+    suit2 = 'club'
+    print('6_club')
+
+print(num2, suit2)
 cv2.waitKey(0)
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
