@@ -1,4 +1,4 @@
-import cv2
+ import cv2
 
 similar = []
 similar2 = []
@@ -932,6 +932,35 @@ elif maximum2 == similar2[36]:
     print('6_club')
 
 print(num2, suit2)
-cv2.waitKey(0)
+
 #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+main_suit = input()
+
+if main_suit != 'heart' and main_suit != 'spade' and main_suit != 'diamond' and main_suit != 'club':
+    print('Неправильный ввод, перезапустите программу)
+else:
+    pass
+
+
+if suit == main_suit and suit2 == main_suit:
+    if num > num2:
+        print('Первая карта победила!')
+    elif num == num2:
+        print(')
+    else:
+        print(22)
+elif suit == main_suit:
+    print('Первая карта победила!')
+elif suit2 == main_suit:
+    print('Вторая карта победила!')
+elif num > num2:
+    print('Первая карта победила!')
+elif num == num2:
+    print('Поздравляем, ничья!')
+else:
+    print('Вторая карта победила!')
+
+
+cv2.waitKey(0)
+print(m
