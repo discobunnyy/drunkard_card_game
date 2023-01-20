@@ -2,7 +2,7 @@ import cv2
 
 sim = []
 
-img_1 = cv2.imread('cards/input.png', 0)
+img_1 = cv2.imread('cards/6_club.png', 0)
 img_2 = cv2.imread('cards/king_heart.png', 0)
 
 img_ace_heart = cv2.imread('cards/ace_heart.png', 0)
@@ -89,8 +89,8 @@ kp_jack_club, des_jack_club = orb.detectAndCompute(img_jack_club, None)
 kp_10_club, des_10_club = orb.detectAndCompute(img_10_club, None)
 kp_9_club, des_9_club = orb.detectAndCompute(img_9_club, None)
 kp_8_club, des_8_club = orb.detectAndCompute(img_8_club, None)
-kp_7_club, des_8_club = orb.detectAndCompute(img_7_club, None)
-kp_6_club, des_7_club = orb.detectAndCompute(img_6_club, None)
+kp_7_club, des_7_club = orb.detectAndCompute(img_7_club, None)
+kp_6_club, des_6_club = orb.detectAndCompute(img_6_club, None)
 
 #------------------------------------------------
 
@@ -274,6 +274,62 @@ for m, n in matches_ace_diamond:
         good_ace_diamond.append([m])
 sim.append((len(good_ace_diamond)))
 print(*sim)
+
+good_king_diamond = []
+for m, n in matches_king_diamond:
+    if m.distance < 0.8*n.distance:
+        good_king_diamond.append([m])
+sim.append((len(good_king_diamond)))
+print(*sim)
+
+good_queen_diamond = []
+for m, n in matches_queen_diamond:
+    if m.distance < 0.8*n.distance:
+        good_queen_diamond.append([m])
+sim.append((len(good_queen_diamond)))
+print(*sim)
+
+good_jack_diamond = []
+for m, n in matches_jack_diamond:
+    if m.distance < 0.8*n.distance:
+        good_jack_diamond.append([m])
+sim.append((len(good_jack_diamond)))
+print(*sim)
+
+good_10_diamond = []
+for m, n in matches_10_diamond:
+    if m.distance < 0.8*n.distance:
+        good_10_diamond.append([m])
+sim.append((len(good_10_diamond)))
+print(*sim)
+
+good_9_diamond = []
+for m, n in matches_9_diamond:
+    if m.distance < 0.8*n.distance:
+        good_9_diamond.append([m])
+sim.append((len(good_9_diamond)))
+print(*sim)
+
+good_8_diamond = []
+for m, n in matches_8_diamond:
+    if m.distance < 0.8*n.distance:
+        good_8_diamond.append([m])
+sim.append((len(good_8_diamond)))
+print(*sim)
+
+good_7_diamond = []
+for m, n in matches_7_diamond:
+    if m.distance < 0.8*n.distance:
+        good_7_diamond.append([m])
+sim.append((len(good_7_diamond)))
+print(*sim)
+
+good_6_diamond = []
+for m, n in matches_6_diamond:
+    if m.distance < 0.8*n.distance:
+        good_6_diamond.append([m])
+sim.append((len(good_6_diamond)))
+print(*sim)
 #===================================
 
 good_ace_club = []
@@ -335,7 +391,7 @@ print(*sim)
 good_6_club = []
 for m, n in matches_6_club:
     if m.distance < 0.8*n.distance:
-        good_9_club.append([m])
+        good_6_club.append([m])
 sim.append((len(good_6_club)))
 print(*sim)
 
