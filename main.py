@@ -1,8 +1,8 @@
 import cv2
 
-sim = []
+similar = []
 
-img_1 = cv2.imread('cards/6_club.png', 0)
+img_1 = cv2.imread('cards/8_spade.png', 0)
 img_2 = cv2.imread('cards/king_heart.png', 0)
 
 img_ace_heart = cv2.imread('cards/ace_heart.png', 0)
@@ -144,264 +144,306 @@ good_ace_heart = []
 for m, n in matches_ace_heart:
     if m.distance < 0.8*n.distance:
         good_ace_heart.append([m])
-sim.append((len(good_ace_heart)))
-print(*sim)
+similar.append((len(good_ace_heart)))
 
 good_king_heart = []
 for m, n in matches_king_heart:
     if m.distance < 0.8*n.distance:
         good_king_heart.append([m])
-sim.append((len(good_king_heart)))
-print(*sim)
+similar.append((len(good_king_heart)))
 
 good_queen_heart = []
 for m, n in matches_queen_heart:
     if m.distance < 0.8*n.distance:
         good_queen_heart.append([m])
-sim.append((len(good_queen_heart)))
-print(*sim)
+similar.append((len(good_queen_heart)))
 
 good_jack_heart = []
 for m, n in matches_jack_heart:
     if m.distance < 0.8*n.distance:
         good_jack_heart.append([m])
-sim.append((len(good_jack_heart)))
-print(*sim)
+similar.append((len(good_jack_heart)))
 
 good_10_heart = []
 for m, n in matches_10_heart:
     if m.distance < 0.8*n.distance:
         good_10_heart.append([m])
-sim.append((len(good_10_heart)))
-print(*sim)
+similar.append((len(good_10_heart)))
 
 good_9_heart = []
 for m, n in matches_9_heart:
     if m.distance < 0.8*n.distance:
         good_9_heart.append([m])
-sim.append((len(good_9_heart)))
-print(*sim)
+similar.append((len(good_9_heart)))
 
 good_8_heart = []
 for m, n in matches_8_heart:
     if m.distance < 0.8*n.distance:
         good_8_heart.append([m])
-sim.append((len(good_8_heart)))
-print(*sim)
+similar.append((len(good_8_heart)))
 
 good_7_heart = []
 for m, n in matches_7_heart:
     if m.distance < 0.8*n.distance:
         good_7_heart.append([m])
-sim.append((len(good_7_heart)))
-print(*sim)
+similar.append((len(good_7_heart)))
 
 good_6_heart = []
 for m, n in matches_6_heart:
     if m.distance < 0.8*n.distance:
         good_6_heart.append([m])
-sim.append((len(good_6_heart)))
-print(*sim)
+similar.append((len(good_6_heart)))
 #=================================
 
 good_ace_spade = []
 for m, n in matches_ace_spade:
     if m.distance < 0.8*n.distance:
         good_ace_spade.append([m])
-sim.append((len(good_ace_spade)))
-print(*sim)
+similar.append((len(good_ace_spade)))
 
 good_king_spade = []
 for m, n in matches_king_spade:
     if m.distance < 0.8*n.distance:
         good_king_spade.append([m])
-sim.append((len(good_king_spade)))
-print(*sim)
+similar.append((len(good_king_spade)))
 
 good_queen_spade = []
 for m, n in matches_queen_spade:
     if m.distance < 0.8*n.distance:
         good_queen_spade.append([m])
-sim.append((len(good_queen_spade)))
-print(*sim)
+similar.append((len(good_queen_spade)))
 
 good_jack_spade = []
 for m, n in matches_jack_spade:
     if m.distance < 0.8*n.distance:
         good_jack_spade.append([m])
-sim.append((len(good_jack_spade)))
-print(*sim)
+similar.append((len(good_jack_spade)))
 
 good_10_spade = []
 for m, n in matches_10_spade:
     if m.distance < 0.8*n.distance:
         good_10_spade.append([m])
-sim.append((len(good_10_spade)))
-print(*sim)
+similar.append((len(good_10_spade)))
 
 good_9_spade = []
 for m, n in matches_9_spade:
     if m.distance < 0.8*n.distance:
         good_9_spade.append([m])
-sim.append((len(good_9_spade)))
-print(*sim)
+similar.append((len(good_9_spade)))
 
 good_8_spade = []
 for m, n in matches_8_spade:
     if m.distance < 0.8*n.distance:
         good_8_spade.append([m])
-sim.append((len(good_8_spade)))
-print(*sim)
+similar.append((len(good_8_spade)))
 
 good_7_spade = []
 for m, n in matches_7_spade:
     if m.distance < 0.8*n.distance:
         good_7_spade.append([m])
-sim.append((len(good_7_spade)))
-print(*sim)
+similar.append((len(good_7_spade)))
 
 good_6_spade = []
 for m, n in matches_6_spade:
     if m.distance < 0.8*n.distance:
         good_6_spade.append([m])
-sim.append((len(good_6_spade)))
-print(*sim)
+similar.append((len(good_6_spade)))
 #==================================
 
 good_ace_diamond = []
 for m, n in matches_ace_diamond:
     if m.distance < 0.8*n.distance:
         good_ace_diamond.append([m])
-sim.append((len(good_ace_diamond)))
-print(*sim)
+similar.append((len(good_ace_diamond)))
 
 good_king_diamond = []
 for m, n in matches_king_diamond:
     if m.distance < 0.8*n.distance:
         good_king_diamond.append([m])
-sim.append((len(good_king_diamond)))
-print(*sim)
+similar.append((len(good_king_diamond)))
 
 good_queen_diamond = []
 for m, n in matches_queen_diamond:
     if m.distance < 0.8*n.distance:
         good_queen_diamond.append([m])
-sim.append((len(good_queen_diamond)))
-print(*sim)
+similar.append((len(good_queen_diamond)))
 
 good_jack_diamond = []
 for m, n in matches_jack_diamond:
     if m.distance < 0.8*n.distance:
         good_jack_diamond.append([m])
-sim.append((len(good_jack_diamond)))
-print(*sim)
+similar.append((len(good_jack_diamond)))
 
 good_10_diamond = []
 for m, n in matches_10_diamond:
     if m.distance < 0.8*n.distance:
         good_10_diamond.append([m])
-sim.append((len(good_10_diamond)))
-print(*sim)
+similar.append((len(good_10_diamond)))
 
 good_9_diamond = []
 for m, n in matches_9_diamond:
     if m.distance < 0.8*n.distance:
         good_9_diamond.append([m])
-sim.append((len(good_9_diamond)))
-print(*sim)
+similar.append((len(good_9_diamond)))
 
 good_8_diamond = []
 for m, n in matches_8_diamond:
     if m.distance < 0.8*n.distance:
         good_8_diamond.append([m])
-sim.append((len(good_8_diamond)))
-print(*sim)
+similar.append((len(good_8_diamond)))
 
 good_7_diamond = []
 for m, n in matches_7_diamond:
     if m.distance < 0.8*n.distance:
         good_7_diamond.append([m])
-sim.append((len(good_7_diamond)))
-print(*sim)
+similar.append((len(good_7_diamond)))
 
 good_6_diamond = []
 for m, n in matches_6_diamond:
     if m.distance < 0.8*n.distance:
         good_6_diamond.append([m])
-sim.append((len(good_6_diamond)))
-print(*sim)
+similar.append((len(good_6_diamond)))
 #===================================
 
 good_ace_club = []
 for m, n in matches_ace_club:
     if m.distance < 0.8*n.distance:
         good_ace_club.append([m])
-sim.append((len(good_ace_club)))
-print(*sim)
+similar.append((len(good_ace_club)))
 
 good_king_club = []
 for m, n in matches_king_club:
     if m.distance < 0.8*n.distance:
         good_king_club.append([m])
-sim.append((len(good_king_club)))
-print(*sim)
+similar.append((len(good_king_club)))
 
 good_queen_club = []
 for m, n in matches_queen_club:
     if m.distance < 0.8*n.distance:
         good_queen_club.append([m])
-sim.append((len(good_queen_club)))
-print(*sim)
+similar.append((len(good_queen_club)))
 
 good_jack_club = []
 for m, n in matches_jack_club:
     if m.distance < 0.8*n.distance:
         good_jack_club.append([m])
-sim.append((len(good_jack_club)))
-print(*sim)
+similar.append((len(good_jack_club)))
 
 good_10_club = []
 for m, n in matches_10_club:
     if m.distance < 0.8*n.distance:
         good_10_club.append([m])
-sim.append((len(good_10_club)))
-print(*sim)
+similar.append((len(good_10_club)))
 
 good_9_club = []
 for m, n in matches_9_club:
     if m.distance < 0.8*n.distance:
         good_9_club.append([m])
-sim.append((len(good_9_club)))
-print(*sim)
+similar.append((len(good_9_club)))
 
 good_8_club = []
 for m, n in matches_8_club:
     if m.distance < 0.8*n.distance:
         good_8_club.append([m])
-sim.append((len(good_8_club)))
-print(*sim)
+similar.append((len(good_8_club)))
 
 good_7_club = []
 for m, n in matches_7_club:
     if m.distance < 0.8*n.distance:
         good_7_club.append([m])
-sim.append((len(good_7_club)))
-print(*sim)
+similar.append((len(good_7_club)))
 
 good_6_club = []
 for m, n in matches_6_club:
     if m.distance < 0.8*n.distance:
         good_6_club.append([m])
-sim.append((len(good_6_club)))
-print(*sim)
+similar.append((len(good_6_club)))
 
-
+print(*similar)
 #--------------------------------------------------------------------------------------
-img4 = cv2.drawMatchesKnn(img_1, kp_1, img_queen_heart, kp_queen_heart, good_queen_heart, None, flags=2)
+
+'''img4 = cv2.drawMatchesKnn(img_1, kp_1, img_queen_heart, kp_queen_heart, good_queen_heart, None, flags=2)
 img5 = cv2.drawMatchesKnn(img_1, kp_1, img_ace_heart, kp_ace_heart, good_ace_heart, None, flags=2)
 img7 = cv2.drawMatchesKnn(img_1, kp_1, img_ace_spade, kp_ace_spade, good_ace_spade, None, flags=2)
 
 cv2.imshow('c', img4)
 cv2.imshow('d', img5)
-cv2.imshow('a', img7)
+cv2.imshow('a', img7)'''
+
+maximum = max(similar)
+
+if maximum == similar[0]:
+    print('ace_heart')
+elif maximum == similar[1]:
+    print('king_heart')
+elif maximum == similar[2]:
+    print('queen_heart')
+elif maximum == similar[3]:
+    print('jack_heart')
+elif maximum == similar[4]:
+    print('10_heart')
+elif maximum == similar[5]:
+    print('9_heart')
+elif maximum == similar[6]:
+    print('8_heart')
+elif maximum == similar[7]:
+    print('7_heart')
+elif maximum == similar[8]:
+    print('6_heart')
+elif maximum == similar[9]:
+    print('ace_spade')
+elif maximum == similar[10]:
+    print('king_spade')
+elif maximum == similar[11]:
+    print('queen_spade')
+elif maximum == similar[12]:
+    print('jack_spade')
+elif maximum == similar[13]:
+    print('10_spade')
+elif maximum == similar[14]:
+    print('9_spade')
+elif maximum == similar[15]:
+    print('8_spade')
+elif maximum == similar[16]:
+    print('7_spade')
+elif maximum == similar[17]:
+    print('6_spade')
+elif maximum == similar[18]:
+    print('ace_diamond')
+elif maximum == similar[19]:
+    print('king_diamond')
+elif maximum == similar[20]:
+    print('queen_diamond')
+elif maximum == similar[21]:
+    print('jack_diamond')
+elif maximum == similar[22]:
+    print('10_diamond')
+elif maximum == similar[23]:
+    print('9_diamond')
+elif maximum == similar[24]:
+    print('8_diamond')
+elif maximum == similar[25]:
+    print('7_diamond')
+elif maximum == similar[26]:
+    print('6_diamond')
+elif maximum == similar[28]:
+    print('ace_club')
+elif maximum == similar[29]:
+    print('king_club')
+elif maximum == similar[30]:
+    print('queen_club')
+elif maximum == similar[31]:
+    print('jack_club')
+elif maximum == similar[32]:
+    print('10_club')
+elif maximum == similar[33]:
+    print('9_club')
+elif maximum == similar[34]:
+    print('8_club')
+elif maximum == similar[35]:
+    print('7_club')
+elif maximum == similar[36]:
+    print('6_club')
+
+
 cv2.waitKey(0)
