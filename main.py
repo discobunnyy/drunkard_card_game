@@ -363,87 +363,153 @@ print(*similar)
 #--------------------------------------------------------------------------------------
 
 '''img4 = cv2.drawMatchesKnn(img_1, kp_1, img_queen_heart, kp_queen_heart, good_queen_heart, None, flags=2)
-img5 = cv2.drawMatchesKnn(img_1, kp_1, img_ace_heart, kp_ace_heart, good_ace_heart, None, flags=2)
-img7 = cv2.drawMatchesKnn(img_1, kp_1, img_ace_spade, kp_ace_spade, good_ace_spade, None, flags=2)
-
-cv2.imshow('c', img4)
-cv2.imshow('d', img5)
 cv2.imshow('a', img7)'''
 
 maximum = max(similar)
 
 if maximum == similar[0]:
+    num = 9
+    suit = 'heart'
     print('ace_heart')
 elif maximum == similar[1]:
+    num = 8
+    suit = 'heart'
     print('king_heart')
 elif maximum == similar[2]:
+    num = 7
+    suit = 'heart'
     print('queen_heart')
 elif maximum == similar[3]:
+    num = 6
+    suit = 'heart'
     print('jack_heart')
 elif maximum == similar[4]:
+    num = 5
+    suit = 'heart'
     print('10_heart')
 elif maximum == similar[5]:
+    num = 4
+    suit = 'heart'
     print('9_heart')
 elif maximum == similar[6]:
+    num = 3
+    suit = 'heart'
     print('8_heart')
 elif maximum == similar[7]:
+    num = 2
+    suit = 'heart'
     print('7_heart')
 elif maximum == similar[8]:
+    num = 1
+    suit = 'heart'
     print('6_heart')
 elif maximum == similar[9]:
+    num = 9
+    suit = 'spade'
     print('ace_spade')
 elif maximum == similar[10]:
+    num = 8
+    suit = 'spade'
     print('king_spade')
 elif maximum == similar[11]:
+    num = 7
+    suit = 'spade'
     print('queen_spade')
 elif maximum == similar[12]:
+    num = 6
+    suit = 'spade'
     print('jack_spade')
 elif maximum == similar[13]:
+    num = 5
+    suit = 'spade'
     print('10_spade')
 elif maximum == similar[14]:
+    num = 4
+    suit = 'spade'
     print('9_spade')
 elif maximum == similar[15]:
+    num = 3
+    suit = 'spade'
     print('8_spade')
 elif maximum == similar[16]:
+    num = 2
+    suit = 'spade'
     print('7_spade')
 elif maximum == similar[17]:
+    num = 1
+    suit = 'spade'
     print('6_spade')
 elif maximum == similar[18]:
+    num = 9
+    suit = 'diamond'
     print('ace_diamond')
 elif maximum == similar[19]:
+    num = 8
+    suit = 'diamond'
     print('king_diamond')
 elif maximum == similar[20]:
+    num = 7
+    suit = 'diamond'
     print('queen_diamond')
 elif maximum == similar[21]:
+    num = 6
+    suit = 'diamond'
     print('jack_diamond')
 elif maximum == similar[22]:
+    num = 5
+    suit = 'diamond'
     print('10_diamond')
 elif maximum == similar[23]:
+    num = 4
+    suit = 'diamond'
     print('9_diamond')
 elif maximum == similar[24]:
+    num = 3
+    suit = 'diamond'
     print('8_diamond')
 elif maximum == similar[25]:
+    num = 2
+    suit = 'diamond'
     print('7_diamond')
 elif maximum == similar[26]:
+    num = 1
+    suit = 'diamond'
     print('6_diamond')
 elif maximum == similar[28]:
+    num = 9
+    suit = 'club'
     print('ace_club')
 elif maximum == similar[29]:
+    num = 8
+    suit = 'club'
     print('king_club')
 elif maximum == similar[30]:
+    num = 7
+    suit = 'club'
     print('queen_club')
 elif maximum == similar[31]:
+    num = 6
+    suit = 'club'
     print('jack_club')
 elif maximum == similar[32]:
+    num = 5
+    suit = 'club'
     print('10_club')
 elif maximum == similar[33]:
+    num = 4
+    suit = 'club'
     print('9_club')
 elif maximum == similar[34]:
+    num = 3
+    suit = 'club'
     print('8_club')
 elif maximum == similar[35]:
+    num = 2
+    suit = 'club'
     print('7_club')
 elif maximum == similar[36]:
+    num = 1
+    suit = 'club'
     print('6_club')
-
 
 cv2.waitKey(0)
