@@ -92,8 +92,8 @@ kp_8_club, des_8_club = orb.detectAndCompute(img_8_club, None)
 kp_7_club, des_8_club = orb.detectAndCompute(img_7_club, None)
 kp_6_club, des_7_club = orb.detectAndCompute(img_6_club, None)
 
-
 #------------------------------------------------
+
 bf = cv2.BFMatcher()
 matches_ace_heart = bf.knnMatch(des_1, des_ace_heart, k=2)
 matches_king_heart = bf.knnMatch(des_1, des_king_heart, k=2)
@@ -118,18 +118,25 @@ matches_6_spade = bf.knnMatch(des_1, des_6_spade, k=2)
 
 
 matches_ace_diamond = bf.knnMatch(des_1, des_ace_diamond, k=2)
-matches_ace_diamond = bf.knnMatch(des_1, des_ace_diamond, k=2)
-matches_ace_diamond = bf.knnMatch(des_1, des_ace_diamond, k=2)
-matches_ace_diamond = bf.knnMatch(des_1, des_ace_diamond, k=2)
-matches_ace_diamond = bf.knnMatch(des_1, des_ace_diamond, k=2)
+matches_king_diamond = bf.knnMatch(des_1, des_king_diamond, k=2)
+matches_queen_diamond = bf.knnMatch(des_1, des_queen_diamond, k=2)
+matches_jack_diamond = bf.knnMatch(des_1, des_jack_diamond, k=2)
+matches_10_diamond = bf.knnMatch(des_1, des_10_diamond, k=2)
+matches_9_diamond = bf.knnMatch(des_1, des_9_diamond, k=2)
+matches_8_diamond = bf.knnMatch(des_1, des_8_diamond, k=2)
+matches_7_diamond = bf.knnMatch(des_1, des_7_diamond, k=2)
+matches_6_diamond = bf.knnMatch(des_1, des_6_diamond, k=2)
 
 
 matches_ace_club = bf.knnMatch(des_1, des_ace_club, k=2)
-matches_ace_club = bf.knnMatch(des_1, des_ace_club, k=2)
-matches_ace_club = bf.knnMatch(des_1, des_ace_club, k=2)
-matches_ace_club = bf.knnMatch(des_1, des_ace_club, k=2)
-matches_ace_club = bf.knnMatch(des_1, des_ace_club, k=2)
-
+matches_king_club = bf.knnMatch(des_1, des_king_club, k=2)
+matches_queen_club = bf.knnMatch(des_1, des_queen_club, k=2)
+matches_jack_club = bf.knnMatch(des_1, des_jack_club, k=2)
+matches_10_club = bf.knnMatch(des_1, des_10_club, k=2)
+matches_9_club = bf.knnMatch(des_1, des_9_club, k=2)
+matches_8_club = bf.knnMatch(des_1, des_8_club, k=2)
+matches_7_club = bf.knnMatch(des_1, des_7_club, k=2)
+matches_6_club = bf.knnMatch(des_1, des_6_club, k=2)
 
 #------------------------------------------------------
 
@@ -195,7 +202,7 @@ for m, n in matches_6_heart:
         good_6_heart.append([m])
 sim.append((len(good_6_heart)))
 print(*sim)
-
+#=================================
 
 good_ace_spade = []
 for m, n in matches_ace_spade:
@@ -204,6 +211,62 @@ for m, n in matches_ace_spade:
 sim.append((len(good_ace_spade)))
 print(*sim)
 
+good_king_spade = []
+for m, n in matches_king_spade:
+    if m.distance < 0.8*n.distance:
+        good_king_spade.append([m])
+sim.append((len(good_king_spade)))
+print(*sim)
+
+good_queen_spade = []
+for m, n in matches_queen_spade:
+    if m.distance < 0.8*n.distance:
+        good_queen_spade.append([m])
+sim.append((len(good_queen_spade)))
+print(*sim)
+
+good_jack_spade = []
+for m, n in matches_jack_spade:
+    if m.distance < 0.8*n.distance:
+        good_jack_spade.append([m])
+sim.append((len(good_jack_spade)))
+print(*sim)
+
+good_10_spade = []
+for m, n in matches_10_spade:
+    if m.distance < 0.8*n.distance:
+        good_10_spade.append([m])
+sim.append((len(good_10_spade)))
+print(*sim)
+
+good_9_spade = []
+for m, n in matches_9_spade:
+    if m.distance < 0.8*n.distance:
+        good_9_spade.append([m])
+sim.append((len(good_9_spade)))
+print(*sim)
+
+good_8_spade = []
+for m, n in matches_8_spade:
+    if m.distance < 0.8*n.distance:
+        good_8_spade.append([m])
+sim.append((len(good_8_spade)))
+print(*sim)
+
+good_7_spade = []
+for m, n in matches_7_spade:
+    if m.distance < 0.8*n.distance:
+        good_7_spade.append([m])
+sim.append((len(good_7_spade)))
+print(*sim)
+
+good_6_spade = []
+for m, n in matches_6_spade:
+    if m.distance < 0.8*n.distance:
+        good_6_spade.append([m])
+sim.append((len(good_6_spade)))
+print(*sim)
+#==================================
 
 good_ace_diamond = []
 for m, n in matches_ace_diamond:
@@ -211,7 +274,7 @@ for m, n in matches_ace_diamond:
         good_ace_diamond.append([m])
 sim.append((len(good_ace_diamond)))
 print(*sim)
-
+#===================================
 
 good_ace_club = []
 for m, n in matches_ace_club:
@@ -220,6 +283,61 @@ for m, n in matches_ace_club:
 sim.append((len(good_ace_club)))
 print(*sim)
 
+good_king_club = []
+for m, n in matches_king_club:
+    if m.distance < 0.8*n.distance:
+        good_king_club.append([m])
+sim.append((len(good_king_club)))
+print(*sim)
+
+good_queen_club = []
+for m, n in matches_queen_club:
+    if m.distance < 0.8*n.distance:
+        good_queen_club.append([m])
+sim.append((len(good_queen_club)))
+print(*sim)
+
+good_jack_club = []
+for m, n in matches_jack_club:
+    if m.distance < 0.8*n.distance:
+        good_jack_club.append([m])
+sim.append((len(good_jack_club)))
+print(*sim)
+
+good_10_club = []
+for m, n in matches_10_club:
+    if m.distance < 0.8*n.distance:
+        good_10_club.append([m])
+sim.append((len(good_10_club)))
+print(*sim)
+
+good_9_club = []
+for m, n in matches_9_club:
+    if m.distance < 0.8*n.distance:
+        good_9_club.append([m])
+sim.append((len(good_9_club)))
+print(*sim)
+
+good_8_club = []
+for m, n in matches_8_club:
+    if m.distance < 0.8*n.distance:
+        good_8_club.append([m])
+sim.append((len(good_8_club)))
+print(*sim)
+
+good_7_club = []
+for m, n in matches_7_club:
+    if m.distance < 0.8*n.distance:
+        good_7_club.append([m])
+sim.append((len(good_7_club)))
+print(*sim)
+
+good_6_club = []
+for m, n in matches_6_club:
+    if m.distance < 0.8*n.distance:
+        good_9_club.append([m])
+sim.append((len(good_6_club)))
+print(*sim)
 
 
 #--------------------------------------------------------------------------------------
