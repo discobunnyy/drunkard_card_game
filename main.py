@@ -3,9 +3,11 @@ import cv2
 similar = []
 similar2 = []
 
+print('Карта первого игрока должна называться "card_1.png", карта второго игрока должна назваться "card_2.png"')
+
 # reading cards (input)
-img_1 = cv2.imread('cards/card_1.png', 0)
-img_2 = cv2.imread('cards/card_2.png', 0)
+img_1 = cv2.imread('card_1.png', 0)
+img_2 = cv2.imread('card_2.png', 0)
 
 img_ace_heart = cv2.imread('cards/ace_heart.png', 0)
 img_king_heart = cv2.imread('cards/king_heart.png', 0)
@@ -47,10 +49,9 @@ img_8_club = cv2.imread('cards/8_club.png', 0)
 img_7_club = cv2.imread('cards/7_club.png', 0)
 img_6_club = cv2.imread('cards/6_club.png', 0)
 
-#------------------------------------------------
+# find keypoints
 orb = cv2.ORB_create()
 
-#------------------------------------------------
 kp_1, des_1 = orb.detectAndCompute(img_1, None)
 kp_ace_heart, des_ace_heart = orb.detectAndCompute(img_ace_heart, None)
 kp_king_heart, des_king_heart = orb.detectAndCompute(img_king_heart, None)
@@ -94,7 +95,7 @@ kp_8_club, des_8_club = orb.detectAndCompute(img_8_club, None)
 kp_7_club, des_7_club = orb.detectAndCompute(img_7_club, None)
 kp_6_club, des_6_club = orb.detectAndCompute(img_6_club, None)
 
-#------------------------------------------------
+# find matches
 bf = cv2.BFMatcher()
 matches_ace_heart = bf.knnMatch(des_1, des_ace_heart, k=2)
 matches_king_heart = bf.knnMatch(des_1, des_king_heart, k=2)
@@ -139,7 +140,7 @@ matches_8_club = bf.knnMatch(des_1, des_8_club, k=2)
 matches_7_club = bf.knnMatch(des_1, des_7_club, k=2)
 matches_6_club = bf.knnMatch(des_1, des_6_club, k=2)
 
-#------------------------------------------------------
+# counting the number of matches
 good_ace_heart = []
 for m, n in matches_ace_heart:
     if m.distance < 0.8*n.distance:
@@ -358,616 +359,622 @@ for m, n in matches_6_club:
     if m.distance < 0.8*n.distance:
         good_6_club.append([m])
 similar.append((len(good_6_club)))
+#print(*similar)
 
-print(*similar)
-
-# find maximum number of matches
-maximum = max(similar)
+maximum = max(similar)              # find maximum number of matches
 
 # match the maximum number of matches with the card:
-if maximum == similar[0]:
-    num = 9
-    suit = 'heart'
-    print('Первая карта - ace heart')
-elif maximum == similar[1]:
-    num = 8
-    suit = 'heart'
-    print('Первая карта - king heart')
-elif maximum == similar[2]:
-    num = 7
-    suit = 'heart'
-    print('Первая карта - queen heart')
-elif maximum == similar[3]:
-    num = 6
-    suit = 'heart'
-    print('Первая карта - jack heart')
-elif maximum == similar[4]:
-    num = 5
-    suit = 'heart'
-    print('Первая карта - 10 heart')
-elif maximum == similar[5]:
-    num = 4
-    suit = 'heart'
-    print('Первая карта - 9 heart')
-elif maximum == similar[6]:
-    num = 3
-    suit = 'heart'
-    print('Первая карта - 8 heart')
-elif maximum == similar[7]:
-    num = 2
-    suit = 'heart'
-    print('Первая карта - 7 heart')
-elif maximum == similar[8]:
-    num = 1
-    suit = 'heart'
-    print('Первая карта - 6 heart')
-elif maximum == similar[9]:
-    num = 9
-    suit = 'spade'
-    print('Первая карта - ace spade')
-elif maximum == similar[10]:
-    num = 8
-    suit = 'spade'
-    print('Первая карта - king spade')
-elif maximum == similar[11]:
-    num = 7
-    suit = 'spade'
-    print('Первая карта - queen spade')
-elif maximum == similar[12]:
-    num = 6
-    suit = 'spade'
-    print('Первая карта - jack spade')
-elif maximum == similar[13]:
-    num = 5
-    suit = 'spade'
-    print('Первая карта - 10 spade')
-elif maximum == similar[14]:
-    num = 4
-    suit = 'spade'
-    print('Первая карта - 9 spade')
-elif maximum == similar[15]:
-    num = 3
-    suit = 'spade'
-    print('Первая карта - 8 spade')
-elif maximum == similar[16]:
-    num = 2
-    suit = 'spade'
-    print('Первая карта - 7 spade')
-elif maximum == similar[17]:
-    num = 1
-    suit = 'spade'
-    print('Первая карта - 6 spade')
-elif maximum == similar[18]:
-    num = 9
-    suit = 'diamond'
-    print('Первая карта - ace diamond')
-elif maximum == similar[19]:
-    num = 8
-    suit = 'diamond'
-    print('Первая карта - king diamond')
-elif maximum == similar[20]:
-    num = 7
-    suit = 'diamond'
-    print('Первая карта - queen diamond')
-elif maximum == similar[21]:
-    num = 6
-    suit = 'diamond'
-    print('Первая карта - jack diamond')
-elif maximum == similar[22]:
-    num = 5
-    suit = 'diamond'
-    print('Первая карта - 10 diamond')
-elif maximum == similar[23]:
-    num = 4
-    suit = 'diamond'
-    print('Первая карта - 9 diamond')
-elif maximum == similar[24]:
-    num = 3
-    suit = 'diamond'
-    print('Первая карта - 8 diamond')
-elif maximum == similar[25]:
-    num = 2
-    suit = 'diamond'
-    print('Первая карта - 7 diamond')
-elif maximum == similar[26]:
-    num = 1
-    suit = 'diamond'
-    print('Первая карта - 6 diamond')
-elif maximum == similar[28]:
-    num = 9
-    suit = 'club'
-    print('Первая карта - ace club')
-elif maximum == similar[29]:
-    num = 8
-    suit = 'club'
-    print('Первая карта - king club')
-elif maximum == similar[30]:
-    num = 7
-    suit = 'club'
-    print('Первая карта - queen club')
-elif maximum == similar[31]:
-    num = 6
-    suit = 'club'
-    print('Первая карта - jack club')
-elif maximum == similar[32]:
-    num = 5
-    suit = 'club'
-    print('Первая карта - 10 club')
-elif maximum == similar[33]:
-    num = 4
-    suit = 'club'
-    print('Первая карта - 9 club')
-elif maximum == similar[34]:
-    num = 3
-    suit = 'club'
-    print('Первая карта - 8 club')
-elif maximum == similar[35]:
-    num = 2
-    suit = 'club'
-    print('Первая карта - 7 club')
-elif maximum == similar[36]:
-    num = 1
-    suit = 'club'
-    print('Первая карта - 6 club')
+if maximum > 380:
+    if maximum == similar[0]:
+        num = 9
+        suit = 'heart'
+        print('Первая карта - ace heart')
+    elif maximum == similar[1]:
+        num = 8
+        suit = 'heart'
+        print('Первая карта - king heart')
+    elif maximum == similar[2]:
+        num = 7
+        suit = 'heart'
+        print('Первая карта - queen heart')
+    elif maximum == similar[3]:
+        num = 6
+        suit = 'heart'
+        print('Первая карта - jack heart')
+    elif maximum == similar[4]:
+        num = 5
+        suit = 'heart'
+        print('Первая карта - 10 heart')
+    elif maximum == similar[5]:
+        num = 4
+        suit = 'heart'
+        print('Первая карта - 9 heart')
+    elif maximum == similar[6]:
+        num = 3
+        suit = 'heart'
+        print('Первая карта - 8 heart')
+    elif maximum == similar[7]:
+        num = 2
+        suit = 'heart'
+        print('Первая карта - 7 heart')
+    elif maximum == similar[8]:
+        num = 1
+        suit = 'heart'
+        print('Первая карта - 6 heart')
+    elif maximum == similar[9]:
+        num = 9
+        suit = 'spade'
+        print('Первая карта - ace spade')
+    elif maximum == similar[10]:
+        num = 8
+        suit = 'spade'
+        print('Первая карта - king spade')
+    elif maximum == similar[11]:
+        num = 7
+        suit = 'spade'
+        print('Первая карта - queen spade')
+    elif maximum == similar[12]:
+        num = 6
+        suit = 'spade'
+        print('Первая карта - jack spade')
+    elif maximum == similar[13]:
+        num = 5
+        suit = 'spade'
+        print('Первая карта - 10 spade')
+    elif maximum == similar[14]:
+        num = 4
+        suit = 'spade'
+        print('Первая карта - 9 spade')
+    elif maximum == similar[15]:
+        num = 3
+        suit = 'spade'
+        print('Первая карта - 8 spade')
+    elif maximum == similar[16]:
+        num = 2
+        suit = 'spade'
+        print('Первая карта - 7 spade')
+    elif maximum == similar[17]:
+        num = 1
+        suit = 'spade'
+        print('Первая карта - 6 spade')
+    elif maximum == similar[18]:
+        num = 9
+        suit = 'diamond'
+        print('Первая карта - ace diamond')
+    elif maximum == similar[19]:
+        num = 8
+        suit = 'diamond'
+        print('Первая карта - king diamond')
+    elif maximum == similar[20]:
+        num = 7
+        suit = 'diamond'
+        print('Первая карта - queen diamond')
+    elif maximum == similar[21]:
+        num = 6
+        suit = 'diamond'
+        print('Первая карта - jack diamond')
+    elif maximum == similar[22]:
+        num = 5
+        suit = 'diamond'
+        print('Первая карта - 10 diamond')
+    elif maximum == similar[23]:
+        num = 4
+        suit = 'diamond'
+        print('Первая карта - 9 diamond')
+    elif maximum == similar[24]:
+        num = 3
+        suit = 'diamond'
+        print('Первая карта - 8 diamond')
+    elif maximum == similar[25]:
+        num = 2
+        suit = 'diamond'
+        print('Первая карта - 7 diamond')
+    elif maximum == similar[26]:
+        num = 1
+        suit = 'diamond'
+        print('Первая карта - 6 diamond')
+    elif maximum == similar[28]:
+        num = 9
+        suit = 'club'
+        print('Первая карта - ace club')
+    elif maximum == similar[29]:
+        num = 8
+        suit = 'club'
+        print('Первая карта - king club')
+    elif maximum == similar[30]:
+        num = 7
+        suit = 'club'
+        print('Первая карта - queen club')
+    elif maximum == similar[31]:
+        num = 6
+        suit = 'club'
+        print('Первая карта - jack club')
+    elif maximum == similar[32]:
+        num = 5
+        suit = 'club'
+        print('Первая карта - 10 club')
+    elif maximum == similar[33]:
+        num = 4
+        suit = 'club'
+        print('Первая карта - 9 club')
+    elif maximum == similar[34]:
+        num = 3
+        suit = 'club'
+        print('Первая карта - 8 club')
+    elif maximum == similar[35]:
+        num = 2
+        suit = 'club'
+        print('Первая карта - 7 club')
+    elif maximum == similar[36]:
+        num = 1
+        suit = 'club'
+        print('Первая карта - 6 club')
 
-#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    # definition of the second card
+    # find keypoints
+    kp_2, des_2 = orb.detectAndCompute(img_2, None)
 
-kp_2, des_2 = orb.detectAndCompute(img_2, None)
-
-bf = cv2.BFMatcher()
-matches_ace_heart2 = bf.knnMatch(des_2, des_ace_heart, k=2)
-matches_king_heart2 = bf.knnMatch(des_2, des_king_heart, k=2)
-matches_queen_heart2 = bf.knnMatch(des_2, des_queen_heart, k=2)
-matches_jack_heart2 = bf.knnMatch(des_2, des_jack_heart, k=2)
-matches_10_heart2 = bf.knnMatch(des_2, des_10_heart, k=2)
-matches_9_heart2 = bf.knnMatch(des_2, des_9_heart, k=2)
-matches_8_heart2 = bf.knnMatch(des_2, des_8_heart, k=2)
-matches_7_heart2 = bf.knnMatch(des_2, des_7_heart, k=2)
-matches_6_heart2 = bf.knnMatch(des_2, des_6_heart, k=2)
-
-
-matches_ace_spade2 = bf.knnMatch(des_2, des_ace_spade, k=2)
-matches_king_spade2 = bf.knnMatch(des_2, des_king_spade, k=2)
-matches_queen_spade2 = bf.knnMatch(des_2, des_queen_spade, k=2)
-matches_jack_spade2 = bf.knnMatch(des_2, des_jack_spade, k=2)
-matches_10_spade2 = bf.knnMatch(des_2, des_10_spade, k=2)
-matches_9_spade2 = bf.knnMatch(des_2, des_9_spade, k=2)
-matches_8_spade2 = bf.knnMatch(des_2, des_8_spade, k=2)
-matches_7_spade2 = bf.knnMatch(des_2, des_7_spade, k=2)
-matches_6_spade2 = bf.knnMatch(des_2, des_6_spade, k=2)
+    # find matches
+    bf = cv2.BFMatcher()
+    matches_ace_heart2 = bf.knnMatch(des_2, des_ace_heart, k=2)
+    matches_king_heart2 = bf.knnMatch(des_2, des_king_heart, k=2)
+    matches_queen_heart2 = bf.knnMatch(des_2, des_queen_heart, k=2)
+    matches_jack_heart2 = bf.knnMatch(des_2, des_jack_heart, k=2)
+    matches_10_heart2 = bf.knnMatch(des_2, des_10_heart, k=2)
+    matches_9_heart2 = bf.knnMatch(des_2, des_9_heart, k=2)
+    matches_8_heart2 = bf.knnMatch(des_2, des_8_heart, k=2)
+    matches_7_heart2 = bf.knnMatch(des_2, des_7_heart, k=2)
+    matches_6_heart2 = bf.knnMatch(des_2, des_6_heart, k=2)
 
 
-matches_ace_diamond2 = bf.knnMatch(des_2, des_ace_diamond, k=2)
-matches_king_diamond2 = bf.knnMatch(des_2, des_king_diamond, k=2)
-matches_queen_diamond2 = bf.knnMatch(des_2, des_queen_diamond, k=2)
-matches_jack_diamond2 = bf.knnMatch(des_2, des_jack_diamond, k=2)
-matches_10_diamond2 = bf.knnMatch(des_2, des_10_diamond, k=2)
-matches_9_diamond2 = bf.knnMatch(des_2, des_9_diamond, k=2)
-matches_8_diamond2 = bf.knnMatch(des_2, des_8_diamond, k=2)
-matches_7_diamond2 = bf.knnMatch(des_2, des_7_diamond, k=2)
-matches_6_diamond2 = bf.knnMatch(des_2, des_6_diamond, k=2)
+    matches_ace_spade2 = bf.knnMatch(des_2, des_ace_spade, k=2)
+    matches_king_spade2 = bf.knnMatch(des_2, des_king_spade, k=2)
+    matches_queen_spade2 = bf.knnMatch(des_2, des_queen_spade, k=2)
+    matches_jack_spade2 = bf.knnMatch(des_2, des_jack_spade, k=2)
+    matches_10_spade2 = bf.knnMatch(des_2, des_10_spade, k=2)
+    matches_9_spade2 = bf.knnMatch(des_2, des_9_spade, k=2)
+    matches_8_spade2 = bf.knnMatch(des_2, des_8_spade, k=2)
+    matches_7_spade2 = bf.knnMatch(des_2, des_7_spade, k=2)
+    matches_6_spade2 = bf.knnMatch(des_2, des_6_spade, k=2)
 
 
-matches_ace_club2 = bf.knnMatch(des_2, des_ace_club, k=2)
-matches_king_club2 = bf.knnMatch(des_2, des_king_club, k=2)
-matches_queen_club2 = bf.knnMatch(des_2, des_queen_club, k=2)
-matches_jack_club2 = bf.knnMatch(des_2, des_jack_club, k=2)
-matches_10_club2 = bf.knnMatch(des_2, des_10_club, k=2)
-matches_9_club2 = bf.knnMatch(des_2, des_9_club, k=2)
-matches_8_club2 = bf.knnMatch(des_2, des_8_club, k=2)
-matches_7_club2 = bf.knnMatch(des_2, des_7_club, k=2)
-matches_6_club2 = bf.knnMatch(des_2, des_6_club, k=2)
+    matches_ace_diamond2 = bf.knnMatch(des_2, des_ace_diamond, k=2)
+    matches_king_diamond2 = bf.knnMatch(des_2, des_king_diamond, k=2)
+    matches_queen_diamond2 = bf.knnMatch(des_2, des_queen_diamond, k=2)
+    matches_jack_diamond2 = bf.knnMatch(des_2, des_jack_diamond, k=2)
+    matches_10_diamond2 = bf.knnMatch(des_2, des_10_diamond, k=2)
+    matches_9_diamond2 = bf.knnMatch(des_2, des_9_diamond, k=2)
+    matches_8_diamond2 = bf.knnMatch(des_2, des_8_diamond, k=2)
+    matches_7_diamond2 = bf.knnMatch(des_2, des_7_diamond, k=2)
+    matches_6_diamond2 = bf.knnMatch(des_2, des_6_diamond, k=2)
 
 
-# -----
-good_ace_heart2 = []
-for m, n in matches_ace_heart2:
-    if m.distance < 0.8*n.distance:
-        good_ace_heart2.append([m])
-similar2.append((len(good_ace_heart2)))
-
-good_king_heart2 = []
-for m, n in matches_king_heart2:
-    if m.distance < 0.8*n.distance:
-        good_king_heart2.append([m])
-similar2.append((len(good_king_heart2)))
-
-good_queen_heart2 = []
-for m, n in matches_queen_heart2:
-    if m.distance < 0.8*n.distance:
-        good_queen_heart2.append([m])
-similar2.append((len(good_queen_heart2)))
-
-good_jack_heart2 = []
-for m, n in matches_jack_heart2:
-    if m.distance < 0.8*n.distance:
-        good_jack_heart2.append([m])
-similar2.append((len(good_jack_heart2)))
-
-good_10_heart2 = []
-for m, n in matches_10_heart2:
-    if m.distance < 0.8*n.distance:
-        good_10_heart2.append([m])
-similar2.append((len(good_10_heart2)))
-
-good_9_heart2 = []
-for m, n in matches_9_heart2:
-    if m.distance < 0.8*n.distance:
-        good_9_heart2.append([m])
-similar2.append((len(good_9_heart2)))
-
-good_8_heart2 = []
-for m, n in matches_8_heart2:
-    if m.distance < 0.8*n.distance:
-        good_8_heart2.append([m])
-similar2.append((len(good_8_heart2)))
-
-good_7_heart2 = []
-for m, n in matches_7_heart2:
-    if m.distance < 0.8*n.distance:
-        good_7_heart2.append([m])
-similar2.append((len(good_7_heart2)))
-
-good_6_heart2 = []
-for m, n in matches_6_heart2:
-    if m.distance < 0.8*n.distance:
-        good_6_heart2.append([m])
-similar2.append((len(good_6_heart2)))
-#=====================================
-
-good_ace_spade2 = []
-for m, n in matches_ace_spade2:
-    if m.distance < 0.8*n.distance:
-        good_ace_spade2.append([m])
-similar2.append((len(good_ace_spade2)))
-
-good_king_spade2 = []
-for m, n in matches_king_spade2:
-    if m.distance < 0.8*n.distance:
-        good_king_spade2.append([m])
-similar2.append((len(good_king_spade2)))
-
-good_queen_spade2 = []
-for m, n in matches_queen_spade2:
-    if m.distance < 0.8*n.distance:
-        good_queen_spade2.append([m])
-similar2.append((len(good_queen_spade2)))
-
-good_jack_spade2 = []
-for m, n in matches_jack_spade2:
-    if m.distance < 0.8*n.distance:
-        good_jack_spade2.append([m])
-similar2.append((len(good_jack_spade2)))
-
-good_10_spade2 = []
-for m, n in matches_10_spade2:
-    if m.distance < 0.8*n.distance:
-        good_10_spade2.append([m])
-similar2.append((len(good_10_spade2)))
-
-good_9_spade2 = []
-for m, n in matches_9_spade2:
-    if m.distance < 0.8*n.distance:
-        good_9_spade2.append([m])
-similar2.append((len(good_9_spade2)))
-
-good_8_spade2 = []
-for m, n in matches_8_spade2:
-    if m.distance < 0.8*n.distance:
-        good_8_spade2.append([m])
-similar2.append((len(good_8_spade2)))
-
-good_7_spade2 = []
-for m, n in matches_7_spade2:
-    if m.distance < 0.8*n.distance:
-        good_7_spade2.append([m])
-similar2.append((len(good_7_spade2)))
-
-good_6_spade2 = []
-for m, n in matches_6_spade2:
-    if m.distance < 0.8*n.distance:
-        good_6_spade2.append([m])
-similar2.append((len(good_6_spade2)))
-#==================================
-
-good_ace_diamond2 = []
-for m, n in matches_ace_diamond2:
-    if m.distance < 0.8*n.distance:
-        good_ace_diamond2.append([m])
-similar2.append((len(good_ace_diamond2)))
-
-good_king_diamond2 = []
-for m, n in matches_king_diamond2:
-    if m.distance < 0.8*n.distance:
-        good_king_diamond2.append([m])
-similar2.append((len(good_king_diamond2)))
-
-good_queen_diamond2 = []
-for m, n in matches_queen_diamond2:
-    if m.distance < 0.8*n.distance:
-        good_queen_diamond2.append([m])
-similar2.append((len(good_queen_diamond2)))
-
-good_jack_diamond2 = []
-for m, n in matches_jack_diamond2:
-    if m.distance < 0.8*n.distance:
-        good_jack_diamond2.append([m])
-similar2.append((len(good_jack_diamond2)))
-
-good_10_diamond2 = []
-for m, n in matches_10_diamond2:
-    if m.distance < 0.8*n.distance:
-        good_10_diamond2.append([m])
-similar2.append((len(good_10_diamond2)))
-
-good_9_diamond2 = []
-for m, n in matches_9_diamond2:
-    if m.distance < 0.8*n.distance:
-        good_9_diamond2.append([m])
-similar2.append((len(good_9_diamond2)))
-
-good_8_diamond2 = []
-for m, n in matches_8_diamond2:
-    if m.distance < 0.8*n.distance:
-        good_8_diamond2.append([m])
-similar2.append((len(good_8_diamond2)))
-
-good_7_diamond2 = []
-for m, n in matches_7_diamond2:
-    if m.distance < 0.8*n.distance:
-        good_7_diamond2.append([m])
-similar2.append((len(good_7_diamond2)))
-
-good_6_diamond2 = []
-for m, n in matches_6_diamond2:
-    if m.distance < 0.8*n.distance:
-        good_6_diamond2.append([m])
-similar2.append((len(good_6_diamond2)))
-#===================================
-
-good_ace_club2 = []
-for m, n in matches_ace_club2:
-    if m.distance < 0.8*n.distance:
-        good_ace_club2.append([m])
-similar2.append((len(good_ace_club2)))
-
-good_king_club2 = []
-for m, n in matches_king_club2:
-    if m.distance < 0.8*n.distance:
-        good_king_club2.append([m])
-similar2.append((len(good_king_club2)))
-
-good_queen_club2 = []
-for m, n in matches_queen_club2:
-    if m.distance < 0.8*n.distance:
-        good_queen_club2.append([m])
-similar2.append((len(good_queen_club2)))
-
-good_jack_club2 = []
-for m, n in matches_jack_club2:
-    if m.distance < 0.8*n.distance:
-        good_jack_club2.append([m])
-similar2.append((len(good_jack_club2)))
-
-good_10_club2 = []
-for m, n in matches_10_club2:
-    if m.distance < 0.8*n.distance:
-        good_10_club2.append([m])
-similar2.append((len(good_10_club2)))
-
-good_9_club2 = []
-for m, n in matches_9_club2:
-    if m.distance < 0.8*n.distance:
-        good_9_club2.append([m])
-similar2.append((len(good_9_club2)))
-
-good_8_club2 = []
-for m, n in matches_8_club2:
-    if m.distance < 0.8*n.distance:
-        good_8_club2.append([m])
-similar2.append((len(good_8_club2)))
-
-good_7_club2 = []
-for m, n in matches_7_club2:
-    if m.distance < 0.8*n.distance:
-        good_7_club2.append([m])
-similar2.append((len(good_7_club2)))
-
-good_6_club2 = []
-for m, n in matches_6_club2:
-    if m.distance < 0.8*n.distance:
-        good_6_club2.append([m])
-similar2.append((len(good_6_club2)))
-
-print(*similar2)
-# find maximum number of matches
-maximum2 = max(similar2)
-
-# match the maximum number of matches with the card:
-if maximum2 == similar2[0]:
-    num2 = 9
-    suit2 = 'heart'
-    print('Вторая карта - ace heart')
-elif maximum2 == similar2[1]:
-    num2 = 8
-    suit2 = 'heart'
-    print('Вторая карта - king heart')
-elif maximum2 == similar2[2]:
-    num2 = 7
-    suit2 = 'heart'
-    print('Вторая карта - queen heart')
-elif maximum2 == similar2[3]:
-    num2 = 6
-    suit2 = 'heart'
-    print('Вторая карта - jack heart')
-elif maximum2 == similar2[4]:
-    num2 = 5
-    suit2 = 'heart'
-    print('Вторая карта - 10 heart')
-elif maximum2 == similar2[5]:
-    num2 = 4
-    suit2 = 'heart'
-    print('Вторая карта - 9 heart')
-elif maximum2 == similar2[6]:
-    num2 = 3
-    suit2 = 'heart'
-    print('Вторая карта - 8 heart')
-elif maximum2 == similar2[7]:
-    num2 = 2
-    suit2 = 'heart'
-    print('Вторая карта - 7 heart')
-elif maximum2 == similar2[8]:
-    num2 = 1
-    suit2 = 'heart'
-    print('Вторая карта - 6 heart')
-elif maximum2 == similar2[9]:
-    num2 = 9
-    suit2 = 'spade'
-    print('Вторая карта - ace spade')
-elif maximum2 == similar2[10]:
-    num2 = 8
-    suit2 = 'spade'
-    print('Вторая карта - king spade')
-elif maximum2 == similar2[11]:
-    num2 = 7
-    suit2 = 'spade'
-    print('Вторая карта - queen spade')
-elif maximum2 == similar2[12]:
-    num2 = 6
-    suit2 = 'spade'
-    print('Вторая карта - jack spade')
-elif maximum2 == similar2[13]:
-    num2 = 5
-    suit2 = 'spade'
-    print('Вторая карта - 10 spade')
-elif maximum2 == similar2[14]:
-    num2 = 4
-    suit2 = 'spade'
-    print('Вторая карта - 9 spade')
-elif maximum2 == similar2[15]:
-    num2 = 3
-    suit2 = 'spade'
-    print('Вторая карта - 8 spade')
-elif maximum2 == similar2[16]:
-    num2 = 2
-    suit2 = 'spade'
-    print('Вторая карта - 7 spade')
-elif maximum2 == similar2[17]:
-    num2 = 1
-    suit2 = 'spade'
-    print('Вторая карта - 6 spade')
-elif maximum2 == similar2[18]:
-    num2 = 9
-    suit2 = 'diamond'
-    print('Вторая карта - ace diamond')
-elif maximum2 == similar2[19]:
-    num2 = 8
-    suit2 = 'diamond'
-    print('Вторая карта - king diamond')
-elif maximum2 == similar2[20]:
-    num2 = 7
-    suit2 = 'diamond'
-    print('Вторая карта - queen_diamond')
-elif maximum2 == similar2[21]:
-    num2 = 6
-    suit2 = 'diamond'
-    print('Вторая карта - jack_diamond')
-elif maximum2 == similar2[22]:
-    num2 = 5
-    suit2 = 'diamond'
-    print('Вторая карта - 10 diamond')
-elif maximum2 == similar2[23]:
-    num2 = 4
-    suit2 = 'diamond'
-    print('Вторая карта - 9 diamond')
-elif maximum2 == similar2[24]:
-    num2 = 3
-    suit2 = 'diamond'
-    print('Вторая карта - 8 diamond')
-elif maximum2 == similar2[25]:
-    num2 = 2
-    suit2 = 'diamond'
-    print('Вторая карта - 7 diamond')
-elif maximum2 == similar2[26]:
-    num2 = 1
-    suit2 = 'diamond'
-    print('Вторая карта - 6 diamond')
-elif maximum2 == similar2[28]:
-    num2 = 9
-    suit2 = 'club'
-    print('Вторая карта - ace club')
-elif maximum2 == similar2[29]:
-    num2 = 8
-    suit2 = 'club'
-    print('Вторая карта - king club')
-elif maximum2 == similar2[30]:
-    num2 = 7
-    suit2 = 'club'
-    print('Вторая карта - queen club')
-elif maximum2 == similar2[31]:
-    num2 = 6
-    suit2 = 'club'
-    print('Вторая карта - jack club')
-elif maximum2 == similar2[32]:
-    num2 = 5
-    suit2 = 'club'
-    print('Вторая карта - 10 club')
-elif maximum2 == similar2[33]:
-    num2 = 4
-    suit2 = 'club'
-    print('Вторая карта - 9 club')
-elif maximum2 == similar2[34]:
-    num2 = 3
-    suit2 = 'club'
-    print('Вторая карта - 8 club')
-elif maximum2 == similar2[35]:
-    num2 = 2
-    suit2 = 'club'
-    print('Вторая карта - 7 club')
-elif maximum2 == similar2[36]:
-    num2 = 1
-    suit2 = 'club'
-    print('Вторая карта - 6 club')
+    matches_ace_club2 = bf.knnMatch(des_2, des_ace_club, k=2)
+    matches_king_club2 = bf.knnMatch(des_2, des_king_club, k=2)
+    matches_queen_club2 = bf.knnMatch(des_2, des_queen_club, k=2)
+    matches_jack_club2 = bf.knnMatch(des_2, des_jack_club, k=2)
+    matches_10_club2 = bf.knnMatch(des_2, des_10_club, k=2)
+    matches_9_club2 = bf.knnMatch(des_2, des_9_club, k=2)
+    matches_8_club2 = bf.knnMatch(des_2, des_8_club, k=2)
+    matches_7_club2 = bf.knnMatch(des_2, des_7_club, k=2)
+    matches_6_club2 = bf.knnMatch(des_2, des_6_club, k=2)
 
 
-#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    # counting the number of matches
+    good_ace_heart2 = []
+    for m, n in matches_ace_heart2:
+        if m.distance < 0.8*n.distance:
+            good_ace_heart2.append([m])
+    similar2.append((len(good_ace_heart2)))
 
-# user enters trump
-print('Пожалуйста, введите козырную масть (на английском с маленькой буквы): diamond (Бубы), heart (Черви), Club (Трефы), Spade (Пики)')
-main_suit = input()
+    good_king_heart2 = []
+    for m, n in matches_king_heart2:
+        if m.distance < 0.8*n.distance:
+            good_king_heart2.append([m])
+    similar2.append((len(good_king_heart2)))
 
-# checking the correctness of the input data
-if main_suit != 'heart' and main_suit != 'spade' and main_suit != 'diamond' and main_suit != 'club':
-    print('Неправильный ввод, перезапустите программу')
-else:
-    pass
+    good_queen_heart2 = []
+    for m, n in matches_queen_heart2:
+        if m.distance < 0.8*n.distance:
+            good_queen_heart2.append([m])
+    similar2.append((len(good_queen_heart2)))
 
-# game
-if suit == main_suit and suit2 == main_suit:
-    if num > num2:
-        print('Первая карта победила!')
-    elif num == num2:
-        print('Поздравляем, ничья!')
+    good_jack_heart2 = []
+    for m, n in matches_jack_heart2:
+        if m.distance < 0.8*n.distance:
+            good_jack_heart2.append([m])
+    similar2.append((len(good_jack_heart2)))
+
+    good_10_heart2 = []
+    for m, n in matches_10_heart2:
+        if m.distance < 0.8*n.distance:
+            good_10_heart2.append([m])
+    similar2.append((len(good_10_heart2)))
+
+    good_9_heart2 = []
+    for m, n in matches_9_heart2:
+        if m.distance < 0.8*n.distance:
+            good_9_heart2.append([m])
+    similar2.append((len(good_9_heart2)))
+
+    good_8_heart2 = []
+    for m, n in matches_8_heart2:
+        if m.distance < 0.8*n.distance:
+            good_8_heart2.append([m])
+    similar2.append((len(good_8_heart2)))
+
+    good_7_heart2 = []
+    for m, n in matches_7_heart2:
+        if m.distance < 0.8*n.distance:
+            good_7_heart2.append([m])
+    similar2.append((len(good_7_heart2)))
+
+    good_6_heart2 = []
+    for m, n in matches_6_heart2:
+        if m.distance < 0.8*n.distance:
+            good_6_heart2.append([m])
+    similar2.append((len(good_6_heart2)))
+    #=====================================
+
+    good_ace_spade2 = []
+    for m, n in matches_ace_spade2:
+        if m.distance < 0.8*n.distance:
+            good_ace_spade2.append([m])
+    similar2.append((len(good_ace_spade2)))
+
+    good_king_spade2 = []
+    for m, n in matches_king_spade2:
+        if m.distance < 0.8*n.distance:
+            good_king_spade2.append([m])
+    similar2.append((len(good_king_spade2)))
+
+    good_queen_spade2 = []
+    for m, n in matches_queen_spade2:
+        if m.distance < 0.8*n.distance:
+            good_queen_spade2.append([m])
+    similar2.append((len(good_queen_spade2)))
+
+    good_jack_spade2 = []
+    for m, n in matches_jack_spade2:
+        if m.distance < 0.8*n.distance:
+            good_jack_spade2.append([m])
+    similar2.append((len(good_jack_spade2)))
+
+    good_10_spade2 = []
+    for m, n in matches_10_spade2:
+        if m.distance < 0.8*n.distance:
+            good_10_spade2.append([m])
+    similar2.append((len(good_10_spade2)))
+
+    good_9_spade2 = []
+    for m, n in matches_9_spade2:
+        if m.distance < 0.8*n.distance:
+            good_9_spade2.append([m])
+    similar2.append((len(good_9_spade2)))
+
+    good_8_spade2 = []
+    for m, n in matches_8_spade2:
+        if m.distance < 0.8*n.distance:
+            good_8_spade2.append([m])
+    similar2.append((len(good_8_spade2)))
+
+    good_7_spade2 = []
+    for m, n in matches_7_spade2:
+        if m.distance < 0.8*n.distance:
+            good_7_spade2.append([m])
+    similar2.append((len(good_7_spade2)))
+
+    good_6_spade2 = []
+    for m, n in matches_6_spade2:
+        if m.distance < 0.8*n.distance:
+            good_6_spade2.append([m])
+    similar2.append((len(good_6_spade2)))
+    #==================================
+
+    good_ace_diamond2 = []
+    for m, n in matches_ace_diamond2:
+        if m.distance < 0.8*n.distance:
+            good_ace_diamond2.append([m])
+    similar2.append((len(good_ace_diamond2)))
+
+    good_king_diamond2 = []
+    for m, n in matches_king_diamond2:
+        if m.distance < 0.8*n.distance:
+            good_king_diamond2.append([m])
+    similar2.append((len(good_king_diamond2)))
+
+    good_queen_diamond2 = []
+    for m, n in matches_queen_diamond2:
+        if m.distance < 0.8*n.distance:
+            good_queen_diamond2.append([m])
+    similar2.append((len(good_queen_diamond2)))
+
+    good_jack_diamond2 = []
+    for m, n in matches_jack_diamond2:
+        if m.distance < 0.8*n.distance:
+            good_jack_diamond2.append([m])
+    similar2.append((len(good_jack_diamond2)))
+
+    good_10_diamond2 = []
+    for m, n in matches_10_diamond2:
+        if m.distance < 0.8*n.distance:
+            good_10_diamond2.append([m])
+    similar2.append((len(good_10_diamond2)))
+
+    good_9_diamond2 = []
+    for m, n in matches_9_diamond2:
+        if m.distance < 0.8*n.distance:
+            good_9_diamond2.append([m])
+    similar2.append((len(good_9_diamond2)))
+
+    good_8_diamond2 = []
+    for m, n in matches_8_diamond2:
+        if m.distance < 0.8*n.distance:
+            good_8_diamond2.append([m])
+    similar2.append((len(good_8_diamond2)))
+
+    good_7_diamond2 = []
+    for m, n in matches_7_diamond2:
+        if m.distance < 0.8*n.distance:
+            good_7_diamond2.append([m])
+    similar2.append((len(good_7_diamond2)))
+
+    good_6_diamond2 = []
+    for m, n in matches_6_diamond2:
+        if m.distance < 0.8*n.distance:
+            good_6_diamond2.append([m])
+    similar2.append((len(good_6_diamond2)))
+    #===================================
+
+    good_ace_club2 = []
+    for m, n in matches_ace_club2:
+        if m.distance < 0.8*n.distance:
+            good_ace_club2.append([m])
+    similar2.append((len(good_ace_club2)))
+
+    good_king_club2 = []
+    for m, n in matches_king_club2:
+        if m.distance < 0.8*n.distance:
+            good_king_club2.append([m])
+    similar2.append((len(good_king_club2)))
+
+    good_queen_club2 = []
+    for m, n in matches_queen_club2:
+        if m.distance < 0.8*n.distance:
+            good_queen_club2.append([m])
+    similar2.append((len(good_queen_club2)))
+
+    good_jack_club2 = []
+    for m, n in matches_jack_club2:
+        if m.distance < 0.8*n.distance:
+            good_jack_club2.append([m])
+    similar2.append((len(good_jack_club2)))
+
+    good_10_club2 = []
+    for m, n in matches_10_club2:
+        if m.distance < 0.8*n.distance:
+            good_10_club2.append([m])
+    similar2.append((len(good_10_club2)))
+
+    good_9_club2 = []
+    for m, n in matches_9_club2:
+        if m.distance < 0.8*n.distance:
+            good_9_club2.append([m])
+    similar2.append((len(good_9_club2)))
+
+    good_8_club2 = []
+    for m, n in matches_8_club2:
+        if m.distance < 0.8*n.distance:
+            good_8_club2.append([m])
+    similar2.append((len(good_8_club2)))
+
+    good_7_club2 = []
+    for m, n in matches_7_club2:
+        if m.distance < 0.8*n.distance:
+            good_7_club2.append([m])
+    similar2.append((len(good_7_club2)))
+
+    good_6_club2 = []
+    for m, n in matches_6_club2:
+        if m.distance < 0.8*n.distance:
+            good_6_club2.append([m])
+    similar2.append((len(good_6_club2)))
+    #print(*similar2)
+
+    maximum2 = max(similar2)     # find maximum number of matches
+
+    # match the maximum number of matches with the card:
+    if maximum2 > 380:
+        if maximum2 == similar2[0]:
+            num2 = 9
+            suit2 = 'heart'
+            print('Вторая карта - ace heart')
+        elif maximum2 == similar2[1]:
+            num2 = 8
+            suit2 = 'heart'
+            print('Вторая карта - king heart')
+        elif maximum2 == similar2[2]:
+            num2 = 7
+            suit2 = 'heart'
+            print('Вторая карта - queen heart')
+        elif maximum2 == similar2[3]:
+            num2 = 6
+            suit2 = 'heart'
+            print('Вторая карта - jack heart')
+        elif maximum2 == similar2[4]:
+            num2 = 5
+            suit2 = 'heart'
+            print('Вторая карта - 10 heart')
+        elif maximum2 == similar2[5]:
+            num2 = 4
+            suit2 = 'heart'
+            print('Вторая карта - 9 heart')
+        elif maximum2 == similar2[6]:
+            num2 = 3
+            suit2 = 'heart'
+            print('Вторая карта - 8 heart')
+        elif maximum2 == similar2[7]:
+            num2 = 2
+            suit2 = 'heart'
+            print('Вторая карта - 7 heart')
+        elif maximum2 == similar2[8]:
+            num2 = 1
+            suit2 = 'heart'
+            print('Вторая карта - 6 heart')
+        elif maximum2 == similar2[9]:
+            num2 = 9
+            suit2 = 'spade'
+            print('Вторая карта - ace spade')
+        elif maximum2 == similar2[10]:
+            num2 = 8
+            suit2 = 'spade'
+            print('Вторая карта - king spade')
+        elif maximum2 == similar2[11]:
+            num2 = 7
+            suit2 = 'spade'
+            print('Вторая карта - queen spade')
+        elif maximum2 == similar2[12]:
+            num2 = 6
+            suit2 = 'spade'
+            print('Вторая карта - jack spade')
+        elif maximum2 == similar2[13]:
+            num2 = 5
+            suit2 = 'spade'
+            print('Вторая карта - 10 spade')
+        elif maximum2 == similar2[14]:
+            num2 = 4
+            suit2 = 'spade'
+            print('Вторая карта - 9 spade')
+        elif maximum2 == similar2[15]:
+            num2 = 3
+            suit2 = 'spade'
+            print('Вторая карта - 8 spade')
+        elif maximum2 == similar2[16]:
+            num2 = 2
+            suit2 = 'spade'
+            print('Вторая карта - 7 spade')
+        elif maximum2 == similar2[17]:
+            num2 = 1
+            suit2 = 'spade'
+            print('Вторая карта - 6 spade')
+        elif maximum2 == similar2[18]:
+            num2 = 9
+            suit2 = 'diamond'
+            print('Вторая карта - ace diamond')
+        elif maximum2 == similar2[19]:
+            num2 = 8
+            suit2 = 'diamond'
+            print('Вторая карта - king diamond')
+        elif maximum2 == similar2[20]:
+            num2 = 7
+            suit2 = 'diamond'
+            print('Вторая карта - queen_diamond')
+        elif maximum2 == similar2[21]:
+            num2 = 6
+            suit2 = 'diamond'
+            print('Вторая карта - jack_diamond')
+        elif maximum2 == similar2[22]:
+            num2 = 5
+            suit2 = 'diamond'
+            print('Вторая карта - 10 diamond')
+        elif maximum2 == similar2[23]:
+            num2 = 4
+            suit2 = 'diamond'
+            print('Вторая карта - 9 diamond')
+        elif maximum2 == similar2[24]:
+            num2 = 3
+            suit2 = 'diamond'
+            print('Вторая карта - 8 diamond')
+        elif maximum2 == similar2[25]:
+            num2 = 2
+            suit2 = 'diamond'
+            print('Вторая карта - 7 diamond')
+        elif maximum2 == similar2[26]:
+            num2 = 1
+            suit2 = 'diamond'
+            print('Вторая карта - 6 diamond')
+        elif maximum2 == similar2[28]:
+            num2 = 9
+            suit2 = 'club'
+            print('Вторая карта - ace club')
+        elif maximum2 == similar2[29]:
+            num2 = 8
+            suit2 = 'club'
+            print('Вторая карта - king club')
+        elif maximum2 == similar2[30]:
+            num2 = 7
+            suit2 = 'club'
+            print('Вторая карта - queen club')
+        elif maximum2 == similar2[31]:
+            num2 = 6
+            suit2 = 'club'
+            print('Вторая карта - jack club')
+        elif maximum2 == similar2[32]:
+            num2 = 5
+            suit2 = 'club'
+            print('Вторая карта - 10 club')
+        elif maximum2 == similar2[33]:
+            num2 = 4
+            suit2 = 'club'
+            print('Вторая карта - 9 club')
+        elif maximum2 == similar2[34]:
+            num2 = 3
+            suit2 = 'club'
+            print('Вторая карта - 8 club')
+        elif maximum2 == similar2[35]:
+            num2 = 2
+            suit2 = 'club'
+            print('Вторая карта - 7 club')
+        elif maximum2 == similar2[36]:
+            num2 = 1
+            suit2 = 'club'
+            print('Вторая карта - 6 club')
+
+
+        #%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+        # user enters trump
+        print('Пожалуйста, введите козырную масть (на английском с маленькой буквы): diamond (Бубы), heart (Черви), club (Трефы), spade (Пики)')
+        main_suit = input()
+
+        # checking the correctness of the input data
+        if main_suit != 'heart' and main_suit != 'spade' and main_suit != 'diamond' and main_suit != 'club':
+            print('Неправильный ввод, перезапустите программу')
+        else:
+            # game
+            if suit == main_suit and suit2 == main_suit:
+                if num > num2:
+                    print('Первая карта победила!')
+                elif num == num2:
+                    print('Поздравляем, ничья!')
+                else:
+                    print('Вторая карта победила!')
+            elif suit == main_suit:
+                print('Первая карта победила!')
+            elif suit2 == main_suit:
+                print('Вторая карта победила!')
+            elif num > num2:
+                print('Первая карта победила!')
+            elif num == num2:
+                print('Поздравляем, ничья!')
+            else:
+                print('Вторая карта победила!')
+
+
+
+        '''img_4 = cv2.drawMatchesKnn(img_1, kp_1, img_queen_diamond, kp_queen_diamond, good_queen_diamond, None, flags=2)
+        cv2.imshow('Second card', img_4)'''
+
+        # print cards
+        img_1_1 = cv2.imread('card_1.png')
+        img_2_2 = cv2.imread('card_2.png')
+        cv2.imshow('First card', img_1_1)
+        cv2.imshow('Second card', img_2_2)
+
     else:
-        print('Вторая карта победила!')
-elif suit == main_suit:
-    print('Первая карта победила!')
-elif suit2 == main_suit:
-    print('Вторая карта победила!')
-elif num > num2:
-    print('Первая карта победила!')
-elif num == num2:
-    print('Поздравляем, ничья!')
+        print('Неправильный ввод, перезапустите программу')
+
 else:
-    print('Вторая карта победила!')
-
-#img4 = cv2.drawMatchesKnn(img_1, kp_1, img_queen_heart, kp_queen_heart, good_queen_heart, None, flags=2)
-
-# print cards
-img_1_1 = cv2.imread('cards/card_1.png')
-img_2_2 = cv2.imread('cards/card_2.png')
-cv2.imshow('First catd', img_1_1)
-cv2.imshow('Second card', img_2_2)
-
+    print('Неправильный ввод, перезапустите программу')
 
 cv2.waitKey(0)
